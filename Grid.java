@@ -36,10 +36,24 @@ public class Grid {
      */
     public void printArray() {
         for (int[] grid1 : grid) {
-            for (int j = 0; j < grid1.length; j++) {
-                System.out.print(grid1[j] + " ");
+            for (int vertex : grid1) {
+                System.out.print(colorNumber(vertex) + " ");
             }
             System.out.println();
         }
+    }
+    /**
+     * @param number number
+     * @return the number colored
+     */
+    private String colorNumber(int number) {
+        String colorCode;
+        colorCode = switch (number) {
+            case 1 -> "\u001B[36m";
+            case 2 -> "\u001B[33m";
+            case 3 -> "\u001B[31m";
+            default -> "\u001B[34m";
+        };
+        return colorCode + number + "\u001B[0m";
     }
 }

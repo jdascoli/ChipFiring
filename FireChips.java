@@ -9,7 +9,7 @@ public class FireChips {
      * @param args
      */
     public static void main(String args[]) {
-        Grid grid = new Grid(5, 3, 0, 4);
+        Grid grid = new Grid(5, 5, 3, 2);
         grid.printArray();
     }
 }
