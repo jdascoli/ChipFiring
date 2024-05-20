@@ -1,18 +1,26 @@
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.event.MouseWheelEvent;
+import java.awt.event.MouseWheelListener;
 import javax.swing.JPanel;
 
-public class GridDisplay extends JPanel{
+public class GridDisplay extends JPanel implements MouseWheelListener{
     private final Grid grid;
+    private int panelSize = 10;
 
+    @SuppressWarnings("LeakingThisInConstructor")
     public GridDisplay(Grid grid) {
         this.grid = grid;
-    }   
-    @Override
+        addMouseWheelListener(this);
+        setPreferredSize(new Dimension(grid.getGrid()[0].length * panelSize, grid.getGrid().length * panelSize));
+    }  
+
+    @Override // implementation
     protected void paintComponent(Graphics g){
         super.paintComponent(g);
         int[][] paintedGrid = grid.getGrid();
-        int panelSize = 10;
+        
 
         //go through the grid
         for(int row = 0; row < paintedGrid.length; row++){
@@ -30,9 +38,23 @@ public class GridDisplay extends JPanel{
                 //put the panels in display
                 g.setColor(color);
                 g.fillRect(col * panelSize, row * panelSize, panelSize, panelSize);
-                
+
             }
         }
 
+    }
+
+    @Override //required
+    public void mouseWheelMoved(MouseWheelEvent e) {
+        
+        //get mouse scroll input
+        int direction = e.getWheelRotation();
+
+        //zoom in and out
+        if(direction == -1) panelSize+=1; 
+        else panelSize-=1;
+
+        //display zoomed in/out grid
+        repaint();
     }
 }

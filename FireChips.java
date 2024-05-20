@@ -1,4 +1,5 @@
 
+import java.awt.BorderLayout;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 
@@ -7,8 +8,8 @@ import javax.swing.SwingUtilities;
  */
 public class FireChips {
 
-    public static final int ROWS = 97, COLS = 97;
-    public static int baseNum = 0, centerNum = 10000;
+    public static final int ROWS = 1000, COLS = 1000;
+    public static int baseNum = 0, centerNum = 1000000;
     /**
      * Fire the Chips
      *
@@ -20,14 +21,15 @@ public class FireChips {
             //set up JFrame window
             JFrame frame = new JFrame("Grid Display");
             frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-            frame.setSize(1200, 800);
-            frame.setLocationRelativeTo(null);
-
+        
             Grid grid = new Grid(ROWS, COLS, baseNum, centerNum);
             grid.ChipDFS(ROWS / 2, COLS / 2);
 
             GridDisplay display = new GridDisplay(grid);
-            frame.add(display);  
+            frame.add(display, BorderLayout.CENTER); 
+
+            frame.pack();
+            frame.setLocationRelativeTo(null);
             frame.setVisible(true);
         });
     }
