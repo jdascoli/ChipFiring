@@ -29,16 +29,19 @@ public class GridDisplay extends JPanel implements MouseWheelListener{
 
                 //paint the panels
                 Color color = switch (chips) {
-                    case 1 -> Color.CYAN;
+                    case 1 -> Color.RED;
                     case 2 -> Color.YELLOW;
-                    case 3 -> Color.RED;
-                    default -> Color.BLUE;
+                    case 3 -> Color.BLACK;
+                    default -> Color.LIGHT_GRAY;
                 };
                 
                 //put the panels in display
                 g.setColor(color);
                 g.fillRect(col * panelSize, row * panelSize, panelSize, panelSize);
 
+                //setting border color
+                // g.setColor(Color.BLACK);
+                // g.drawRect(col * panelSize, row * panelSize, panelSize, panelSize);
             }
         }
 

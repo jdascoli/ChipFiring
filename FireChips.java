@@ -8,8 +8,8 @@ import javax.swing.SwingUtilities;
  */
 public class FireChips {
 
-    public static final int ROWS = 1000, COLS = 1000;
-    public static int baseNum = 0, centerNum = 1000000;
+    public static final int ROWS = 550, COLS = 550;
+    public static int baseNum = 0, centerNum = 500000;
     /**
      * Fire the Chips
      *
