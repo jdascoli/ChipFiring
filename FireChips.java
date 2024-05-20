@@ -8,8 +8,8 @@ import javax.swing.SwingUtilities;
  */
 public class FireChips {
 
-    public static final int ROWS = 550, COLS = 550;
-    public static int baseNum = 0, centerNum = 500000;
+    public static final int SIZE = 250;
+    public static int baseNum = 0, centerNum = 100000;
     /**
      * Fire the Chips
      *
@@ -22,8 +22,8 @@ public class FireChips {
             JFrame frame = new JFrame("Grid Display");
             frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         
-            Grid grid = new Grid(ROWS, COLS, baseNum, centerNum);
-            grid.ChipDFS(ROWS / 2, COLS / 2);
+            Grid grid = new Grid(SIZE, SIZE, baseNum, centerNum);
+            grid.ChipDFS(SIZE / 2, SIZE / 2);
 
             GridDisplay display = new GridDisplay(grid);
             frame.add(display, BorderLayout.CENTER); 

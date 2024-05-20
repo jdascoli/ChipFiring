@@ -21,6 +21,11 @@ public class GridDisplay extends JPanel implements MouseWheelListener{
         super.paintComponent(g);
         int[][] paintedGrid = grid.getGrid();
         
+        int gridWidth = paintedGrid[0].length * panelSize;
+        int gridHeight = paintedGrid.length * panelSize;
+
+        int x = (getWidth() - gridWidth) / 2;
+        int y = (getHeight() - gridHeight) / 2;
 
         //go through the grid
         for(int row = 0; row < paintedGrid.length; row++){
@@ -29,7 +34,7 @@ public class GridDisplay extends JPanel implements MouseWheelListener{
 
                 //paint the panels
                 Color color = switch (chips) {
-                    case 1 -> Color.RED;
+                    case 1 -> new Color(186,85,211);
                     case 2 -> Color.YELLOW;
                     case 3 -> Color.BLACK;
                     default -> Color.LIGHT_GRAY;
@@ -37,7 +42,7 @@ public class GridDisplay extends JPanel implements MouseWheelListener{
                 
                 //put the panels in display
                 g.setColor(color);
-                g.fillRect(col * panelSize, row * panelSize, panelSize, panelSize);
+                g.fillRect(x + col * panelSize, y + row * panelSize, panelSize, panelSize);
 
                 //setting border color
                 // g.setColor(Color.BLACK);
