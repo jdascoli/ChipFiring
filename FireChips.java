@@ -25,8 +25,9 @@ public class FireChips {
 
             Grid grid = new Grid(ROWS, COLS, baseNum, centerNum);
             grid.ChipDFS(ROWS / 2, COLS / 2);
-            grid.printGrid();
-            
+
+            GridDisplay display = new GridDisplay(grid);
+            frame.add(display);  
             frame.setVisible(true);
         });
     }
