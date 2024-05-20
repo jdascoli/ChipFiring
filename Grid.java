@@ -21,6 +21,14 @@ public class Grid {
     }
 
     /**
+     * getter for grid
+     * @return grid
+     */
+    public int[][] getGrid() {
+        return grid;
+    }
+
+    /**
      * make a 2d array
      */
     private void makeGrid() {
@@ -36,7 +44,7 @@ public class Grid {
     /**
      * print out the grid
      */
-    public void printArray() {
+    public void printGrid() {
         for (int[] grid1 : grid) {
             for (int vertex : grid1) {
                 System.out.print(colorNumber(vertex) + " ");
@@ -53,14 +61,10 @@ public class Grid {
     private String colorNumber(int number) {
         String colorCode;
         colorCode = switch (number) {
-            case 1 ->
-                "\u001B[36m";
-            case 2 ->
-                "\u001B[33m";
-            case 3 ->
-                "\u001B[31m";
-            default ->
-                "\u001B[34m";
+            case 1 ->"\u001B[36m";
+            case 2 ->"\u001B[33m";
+            case 3 ->"\u001B[31m";
+            default ->"\u001B[34m";
         };
         return colorCode + number + "\u001B[0m";
     }
@@ -73,25 +77,25 @@ public class Grid {
      */
     public void ChipDFS(int row, int column) {
         int chips = grid[row][column];
-        if(grid[row][column] < 4)return;
+        if (grid[row][column] < 4) return;
 
         //set current and neighbor chips recursively
         grid[row][column] = chips % 4;  
         if (row+1 != rows){
             grid[row+1][column] += chips / 4;  
-            if (grid[row+1][column] > 3)ChipDFS(row+1, column);
+            if (grid[row+1][column] > 3) ChipDFS(row+1, column);
         }
         if (row-1 >= 0){
             grid[row-1][column] += chips / 4; 
-            if (grid[row-1][column] > 3)ChipDFS(row-1, column);
+            if (grid[row-1][column] > 3) ChipDFS(row-1, column);
         } 
         if (column + 1 != columns){
             grid[row][column+1] += chips / 4; 
-            if (grid[row][column+1] > 3)ChipDFS(row, column+1);
+            if (grid[row][column+1] > 3) ChipDFS(row, column+1);
         } 
         if (column-1 >= 0){
             grid[row][column-1] += chips / 4; 
-            if (grid[row][column-1] > 3)ChipDFS(row, column-1);
+            if (grid[row][column-1] > 3) ChipDFS(row, column-1);
         } 
     }
 }
