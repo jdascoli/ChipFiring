@@ -8,7 +8,7 @@ import javax.swing.SwingUtilities;
  */
 public class FireChips {
 
-    public static final int SIZE = 250;
+    public static final int SIZE = 5000;
     public static int baseNum = 0, centerNum = 100000;
     /**
      * Fire the Chips

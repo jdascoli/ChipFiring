@@ -60,7 +60,7 @@ public class GridDisplay extends JPanel implements MouseWheelListener{
 
         //zoom in and out
         if(direction == -1) panelSize+=1; 
-        else panelSize-=1;
+        else if(panelSize > 1) panelSize-=1;
 
         //display zoomed in/out grid
         repaint();
